@@ -1,0 +1,58 @@
+@model dynamic
+
+<h2 style="margin-bottom:20px;">Resumen de Campañas</h2>
+
+<div style="
+display:grid;
+grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+gap:20px;
+">
+
+    <!-- Total -->
+    <div style="padding:20px; border-radius:12px; background:#f5f5f5; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+        <h4>Total campañas</h4>
+        <h2>@Model.Total</h2>
+    </div>
+
+    <!-- Vigentes -->
+    <div style="padding:20px; border-radius:12px; background:#e8f5e9; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+        <h4>Vigentes</h4>
+        <h2>@Model.Vigentes</h2>
+    </div>
+
+    <!-- Próximas -->
+    <div style="padding:20px; border-radius:12px; background:#e3f2fd; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+        <h4>Próximas</h4>
+        <h2>@Model.Proximas</h2>
+    </div>
+
+    <!-- Promedio -->
+    <div style="padding:20px; border-radius:12px; background:#fff3e0; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+        <h4>Promedio Descuento</h4>
+        <h2>@Model.Promedio %</h2>
+    </div>
+
+</div>
+
+<!-- Por canal -->
+<div style="margin-top:30px; padding:20px; border-radius:12px; background:#f9f9f9; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+
+    <h3>Campañas por Canal</h3>
+
+    <div style="display:flex; gap:15px; margin-top:10px;">
+
+        <div style="background:#eee; padding:10px 15px; border-radius:8px;">
+            🌐 Web: @Model.Web
+        </div>
+
+        <div style="background:#eee; padding:10px 15px; border-radius:8px;">
+            📱 App: @Model.App
+        </div>
+
+        <div style="background:#eee; padding:10px 15px; border-radius:8px;">
+            🏪 Tienda: @Model.Tienda
+        </div>
+
+    </div>
+
+</div>
