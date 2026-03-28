@@ -13,6 +13,7 @@
             <th>Fechas</th>
         </tr>
     </thead>
+    
     <tbody>
         @foreach (var c in Model)
         {
@@ -24,6 +25,10 @@
                 <td>@c.DescuentoPct %</td>
                 <td>@c.FechaInicio.ToShortDateString() - @c.FechaFin.ToShortDateString()</td>
             </tr>
+            <th>Acciones</th>
+            <td>
+                <a href="/Campanas/Detalle/@c.Id">Ver detalle</a>
+            </td>
         }
     </tbody>
 </table>
