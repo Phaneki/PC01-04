@@ -1,70 +1,114 @@
 @model List<PortalCampanas.Models.Campania>
 
-<h2 style="margin-bottom:20px;">Campañas Comerciales</h2>
+<div style="max-width:1200px; margin:auto;">
 
-<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap:20px;">
-<form method="get" style="margin-bottom:20px; display:flex; gap:10px;">
-    <select name="categoria">
-        <option value="">Categoría</option>
-        <option>Electro</option>
-        <option>Hogar</option>
-        <option>Moda</option>
-        <option>Tecnología</option>
-    </select>
+    <h1 style="margin-bottom:20px; color:#1f2937;">Campañas Comerciales</h1>
 
-    <select name="estado">
-        <option value="">Estado</option>
-        <option>Vigente</option>
-        <option>Próxima</option>
-        <option>Finalizada</option>
-    </select>
+    <!-- FILTROS -->
+    <form method="get" style="
+        display:flex;
+        gap:15px;
+        align-items:center;
+        margin-bottom:25px;
+        flex-wrap:wrap;
+    ">
 
-    <button type="submit" style="background:orange; color:white; border:none; padding:8px 12px; border-radius:6px;">
-        Filtrar
-    </button>
-</form>
+        <select name="categoria" style="padding:10px; border-radius:8px; border:1px solid #ddd;">
+            <option value="">Categoría</option>
+            <option>Electro</option>
+            <option>Hogar</option>
+            <option>Moda</option>
+            <option>Tecnología</option>
+        </select>
 
-@foreach (var c in Model)
-{
-    <div style="border:1px solid #ddd; border-radius:12px; padding:15px; background:#f9f9f9; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+        <select name="estado" style="padding:10px; border-radius:8px; border:1px solid #ddd;">
+            <option value="">Estado</option>
+            <option>Vigente</option>
+            <option>Próxima</option>
+            <option>Finalizada</option>
+        </select>
 
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3>@c.Nombre</h3>
+        <button type="submit" style="
+            background:#2563eb;
+            color:white;
+            border:none;
+            padding:10px 16px;
+            border-radius:8px;
+            cursor:pointer;
+        ">
+            Filtrar
+        </button>
 
-            <span style="
-                padding:5px 10px;
-                border-radius:10px;
-                color:white;
-                font-size:12px;
-                background-color:
-                @(c.Estado == "Vigente" ? "green" :
-                  c.Estado == "Próxima" ? "blue" : "gray")">
-                @c.Estado
-            </span>
-        </div>
+    </form>
 
-        <p><strong>@c.Categoria</strong> • @c.DescuentoPct % • @c.FechaInicio.ToShortDateString()</p>
+    <!-- GRID -->
+    <div style="
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+        gap:20px;
+    ">
 
-        <p style="margin:5px 0;">
-            <span style="background:#eee; padding:3px 8px; border-radius:6px;">
-                @c.Canal
-            </span>
-        </p>
+        @foreach (var c in Model)
+        {
+            <div style="
+                background:white;
+                border-radius:14px;
+                padding:18px;
+                box-shadow:0 4px 10px rgba(0,0,0,0.05);
+                transition:0.2s;
+            ">
 
-        <a href="/Campanas/Detalle/@c.Id"
-           style="
-           display:block;
-           text-align:center;
-           margin-top:10px;
-           padding:8px;
-           border-radius:8px;
-           background:#e0e0e0;
-           text-decoration:none;
-           color:black;">
-            Ver detalle
-        </a>
+                <!-- HEADER -->
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h3 style="margin:0;">@c.Nombre</h3>
+
+                    <span style="
+                        padding:5px 10px;
+                        border-radius:10px;
+                        font-size:12px;
+                        color:white;
+                        background:
+                        @(c.Estado == "Vigente" ? "#16a34a" :
+                          c.Estado == "Próxima" ? "#2563eb" : "#6b7280");
+                    ">
+                        @c.Estado
+                    </span>
+                </div>
+
+                <!-- INFO -->
+                <p style="color:#6b7280; margin:8px 0;">
+                    <strong>@c.Categoria</strong> • @c.DescuentoPct % • @c.FechaInicio.ToShortDateString()
+                </p>
+
+                <!-- CANAL -->
+                <span style="
+                    background:#f1f5f9;
+                    padding:5px 10px;
+                    border-radius:8px;
+                    font-size:12px;
+                ">
+                    @c.Canal
+                </span>
+
+                <!-- BOTON -->
+                <a href="/Campanas/Detalle/@c.Id"
+                   style="
+                   display:block;
+                   text-align:center;
+                   margin-top:15px;
+                   padding:10px;
+                   border-radius:8px;
+                   background:#2563eb;
+                   color:white;
+                   text-decoration:none;
+                   font-weight:500;
+                ">
+                    Ver detalle
+                </a>
+
+            </div>
+        }
 
     </div>
-}
 
 </div>

@@ -1,13 +1,78 @@
 @model PortalCampanas.Models.Campania
 
-<h2>Detalle de Campaña</h2>
+<div style="max-width:800px; margin:30px auto;">
 
-<p><strong>Nombre:</strong> @Model.Nombre</p>
-<p><strong>Categoría:</strong> @Model.Categoria</p>
-<p><strong>Estado:</strong> @Model.Estado</p>
-<p><strong>Canal:</strong> @Model.Canal</p>
-<p><strong>Descuento:</strong> @Model.DescuentoPct %</p>
-<p><strong>Fechas:</strong> @Model.FechaInicio.ToShortDateString() - @Model.FechaFin.ToShortDateString()</p>
-<p><strong>Descripción:</strong> @Model.Descripcion</p>
+    <!-- Volver -->
+    <a href="/Campanas" style="text-decoration:none; color:#555;">
+        ← Volver al listado
+    </a>
 
-<a href="/Campanas">Volver</a>
+    <!-- Card -->
+    <div style="
+        margin-top:15px;
+        padding:25px;
+        border-radius:12px;
+        background:#f9f9f9;
+        box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    ">
+
+        <!-- Header -->
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h2>@Model.Nombre</h2>
+
+            <span style="
+                padding:6px 12px;
+                border-radius:12px;
+                color:white;
+                font-size:12px;
+                background-color:
+                @(Model.Estado == "Vigente" ? "green" :
+                  Model.Estado == "Próxima" ? "blue" : "gray")">
+                @Model.Estado
+            </span>
+        </div>
+
+        <!-- Grid info -->
+        <div style="
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:20px;
+            margin-top:20px;
+        ">
+
+            <div>
+                <p style="color:#777; font-size:13px;">Categoría</p>
+                <p><strong>@Model.Categoria</strong></p>
+            </div>
+
+            <div>
+                <p style="color:#777; font-size:13px;">Canal</p>
+                <p><strong>@Model.Canal</strong></p>
+            </div>
+
+            <div>
+                <p style="color:#777; font-size:13px;">Inicio</p>
+                <p>@Model.FechaInicio.ToShortDateString()</p>
+            </div>
+
+            <div>
+                <p style="color:#777; font-size:13px;">Fin</p>
+                <p>@Model.FechaFin.ToShortDateString()</p>
+            </div>
+
+            <div>
+                <p style="color:#777; font-size:13px;">Descuento</p>
+                <p><strong>@Model.DescuentoPct %</strong></p>
+            </div>
+
+        </div>
+
+        <!-- Descripción -->
+        <div style="margin-top:20px;">
+            <p style="color:#777; font-size:13px;">Descripción</p>
+            <p>@Model.Descripcion</p>
+        </div>
+
+    </div>
+
+</div>

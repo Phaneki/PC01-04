@@ -10,46 +10,26 @@
     <link rel="stylesheet" href="~/PC01_04.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav style="
+    <nav style="
         display:flex;
         justify-content:space-between;
         align-items:center;
-        padding:15px 25px;
-        background:#ffffff;
-        border-bottom:1px solid #ddd;
-">
+        padding:15px 30px;
+        background:white;
+        border-bottom:1px solid #eee;
+        ">
 
-    <!-- Logo -->
-    <div style="font-weight:bold; font-size:20px; color:#ff4d00;">
-        🛍️ Portal de Campañas
-    </div>
+        <h2 style="color:#2563eb;">📊 RetailCam</h2>
 
-    <!-- Menú -->
-    <div style="display:flex; gap:15px;">
-        <a href="/Campanas"
-        style="
-        padding:8px 12px;
-        border-radius:8px;
-        text-decoration:none;
-        background:#ff4d00;
-        color:white;">
-            📋 Listado
-        </a>
+        <div style="display:flex; gap:20px;">
 
-        <a href="/Campanas"
-           style="padding:8px 12px; border-radius:8px; text-decoration:none; color:black;">
-            🔎 Filtrar
-        </a>
+            <a href="/Campanas" style="color:#1f2937; text-decoration:none;">Listado</a>
+            <a href="/Campanas" style="color:#1f2937; text-decoration:none;">Filtrar</a>
+            <a href="/Campanas/Resumen" style="color:#1f2937; text-decoration:none;">Resumen</a>
 
-        <a href="/Campanas/Resumen"
-           style="padding:8px 12px; border-radius:8px; text-decoration:none; color:black;">
-            📊 Resumen
-        </a>
+        </div>
 
-    </div>
-
-</nav>
+    </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
