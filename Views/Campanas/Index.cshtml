@@ -1,7 +1,26 @@
 @model List<PortalCampanas.Models.Campania>
 
 <h2>Listado de Campañas</h2>
+<form method="get">
+    <label>Categoría:</label>
+    <select name="categoria">
+        <option value="">Todas</option>
+        <option>Electro</option>
+        <option>Hogar</option>
+        <option>Moda</option>
+        <option>Tecnología</option>
+    </select>
 
+    <label>Estado:</label>
+    <select name="estado">
+        <option value="">Todos</option>
+        <option>Vigente</option>
+        <option>Próxima</option>
+        <option>Finalizada</option>
+    </select>
+
+    <button type="submit">Filtrar</button>
+</form>
 <table border="1">
     <thead>
         <tr>
