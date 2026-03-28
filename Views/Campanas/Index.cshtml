@@ -1,0 +1,29 @@
+@model List<PortalCampanas.Models.Campania>
+
+<h2>Listado de Campañas</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Estado</th>
+            <th>Canal</th>
+            <th>Descuento</th>
+            <th>Fechas</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Nombre</td>
+                <td>@c.Categoria</td>
+                <td>@c.Estado</td>
+                <td>@c.Canal</td>
+                <td>@c.DescuentoPct %</td>
+                <td>@c.FechaInicio.ToShortDateString() - @c.FechaFin.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
