@@ -15,4 +15,4 @@ namespace PortalCampanas.Models
         public string Descripcion { get; set; }
     }
 }
-// cambio para generar rama
+// cambio para ver rama
