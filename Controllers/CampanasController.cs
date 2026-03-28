@@ -8,7 +8,7 @@ namespace PortalCampanas.Controllers
 {
     public class CampanasController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(string categoria, string estado)
         {
             var campanas = new List<Campania>
             {
@@ -16,6 +16,16 @@ namespace PortalCampanas.Controllers
                 new Campania { Id=2, Nombre="Hogar Sale", Categoria="Hogar", Estado="Próxima", Canal="App", DescuentoPct=15, FechaInicio=DateTime.Now.AddDays(2), FechaFin=DateTime.Now.AddDays(10) },
                 new Campania { Id=3, Nombre="Moda Flash", Categoria="Moda", Estado="Finalizada", Canal="Tienda", DescuentoPct=30, FechaInicio=DateTime.Now.AddDays(-10), FechaFin=DateTime.Now.AddDays(-2) }
             };
+
+            if (!string.IsNullOrEmpty(categoria))
+            {
+                campanas = campanas.Where(c => c.Categoria == categoria).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(estado))
+            {
+                campanas = campanas.Where(c => c.Estado == estado).ToList();
+            }
 
             return View(campanas);
         }
